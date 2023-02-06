@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "title": "Take a Scotch course",
+      "complete": false
+    },
+    {
+      "title": "Travel the world",
+      "complete": true
+    },
+    {
+      "title": "Rewatch Avengers",
+      "complete": false
+    }
+  ]
+}
