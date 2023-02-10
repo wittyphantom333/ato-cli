@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import axios from 'axios';
+import {errorLog} from '../utils.js';
 
 const DEFAULT_OPTIONS = {
   timeout: 1000
@@ -8,7 +9,7 @@ const DEFAULT_OPTIONS = {
 
 class Server {
   constructor (ip, options) {
-    if (!ip) throw Error('Please provide an IP.')
+    if (!ip) errorLog('Please provide an IP.')
 
     this.ip = ip
     this.options = Object.assign(DEFAULT_OPTIONS, options)

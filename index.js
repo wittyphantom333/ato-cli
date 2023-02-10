@@ -28,7 +28,7 @@ const boxenOptions = {
   backgroundColor: '#555555'
 }
 const greeting = chalk.white.bold(
-  'v1.0.0 allThingsOps CLI,  2019-2023 All Rights Reserved'
+  'v1.0.2 allThingsOps CLI,  2019-2023 All Rights Reserved'
 )
 const msgBox = boxen(greeting, boxenOptions)
 
@@ -50,7 +50,7 @@ const greet = async () => {
 program
   .name('ato')
   .description('allThingsOps CLI')
-  .version('1.0.0')
+  .version('1.0.2')
   .allowExcessArguments(false)
   .allowUnknownOption()
 
@@ -116,9 +116,10 @@ program
   .description('api')
   //.argument('<string>', 'API Argument')
   .option('-f, --fivem <string>', 'Return FiveM API Results')
+  .option('-i, --ip <string>', 'IP_Address:Port')
   .option('-d, --debug', 'Display some debugging')
   .action((options, command) => {
-    const srv = new Server('15.204.198.158:30120')
+    const srv = new Server(options.ip)
     if (options.debug) {
       console.error('Called %s with options %o', command.name(), options)
     }
