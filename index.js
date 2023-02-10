@@ -66,9 +66,8 @@ program
     if (options.debug) {
       console.error('Called %s with options %o', command.name(), options)
     }
-    if (options.docker) {
-      errorLog('shit')
-      errorLog(options.docker[0])
+    if (options.docker === undefined && options.npm === undefined) {
+      errorLog('Please specify at least one task')
     }
     //const buildType = options.docker ? `${options.docker} ` : ''
     //console.log(`Thank-you ${buildType}${name}`)
@@ -111,23 +110,28 @@ program
   })
 
 program
-  .command('api')
+  .command('fivem')
   //.alias('a')
-  .description('api')
+  .description('fivem')
   //.argument('<string>', 'API Argument')
-  .option('-f, --fivem <string>', 'Return FiveM API Results')
-  .option('-i, --ip <string>', 'IP_Address:Port')
+  .option('-r, --request <string>', 'Return FiveM API Results')
+  .option('-s, --ip <string>', 'IP_Address:Port')
   .option('-d, --debug', 'Display some debugging')
   .action((options, command) => {
-    const srv = new Server(options.ip)
     if (options.debug) {
       console.error('Called %s with options %o', command.name(), options)
     }
-    if (options.fivem === 'status'){
-      srv.getServerStatus().then(data => console.log(data))
+    if (!options.ip) {
+       errorLog('Please specify IP and Port')
+      return
     }
-    if (options.fivem === 'players'){
+    const srv = new Server(options.ip)
+    if (options.request === 'status'){
+      srv.getServerStatus().then(data => console.log(data)) 
+    }
+    if (options.request === 'players'){
       srv.getPlayers().then(data => console.log(data)) 
+      srv.getMaxPlayers().then(data => console.log(data)) 
     }
 })
 
