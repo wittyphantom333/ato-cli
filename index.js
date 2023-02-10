@@ -28,7 +28,7 @@ const boxenOptions = {
   backgroundColor: '#555555'
 }
 const greeting = chalk.white.bold(
-  'v1.0.2 allThingsOps CLI,  2019-2023 All Rights Reserved'
+  'allThingsOps CLI,  2019-2023 All Rights Reserved'
 )
 const msgBox = boxen(greeting, boxenOptions)
 
@@ -50,7 +50,6 @@ const greet = async () => {
 program
   .name('ato')
   .description('allThingsOps CLI')
-  .version('1.0.2')
   .allowExcessArguments(false)
   .allowUnknownOption()
 
