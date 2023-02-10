@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://img.myloview.com/stickers/ato-atd-letter-logo-design-polygon-monogram-icon-vector-template-700-219339600.jpg" alt="Project logo"></a>
 </p>
 
 <h3 align="center">ato-cli</h3>
@@ -8,15 +8,15 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/The-Documentation-Compendium/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/The-Documentation-Compendium/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> allThingsOps CLI to help DevOps -> MLOps -> DataOps
     <br> 
 </p>
 
@@ -34,81 +34,105 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+allThingsOps CLI for use with everything Ops and everything FiveM.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Prerequisites
+API for getting FiveM server info & status.
 
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
+## Installation 
 
 ```
-Give the example
+npm i ato-cli -g
 ```
 
-And repeat
-
 ```
-until finished
+**ALL FUNCTION REQUESTS**
+- getPlayers - Number of players online - (number)
+- getPlayersAll - List all players in an array - (string)
+- getMaxPlayers - Max players that are able to join the server - (number)
+- getResources - Get resource names of all server resources - (string/array)
+- getTags - Get all server tags - (string)
+- getServer - Get the whole server object - (string)
+- getOnesync - See if the server has OneSync enabled - (boolean)
+- getLocale - The language of the server - (string)
+- getGamename - Get the name of the server - (string)
+- getEnhancedHostSupport - ... - (boolean)
+- getlicenseKeyToken - The license key for the server - (string)
+- getScriptHookAllowed - See if the server supports external mod menus from the client - (boolean)
 ```
-
-End with an example of getting some data out of the system or using it for a little demo.
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
-Explain how to run the automated tests for this system.
+```
+ato test
+```
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
+Test the API status
 
 ```
-Give an example
+ato api test
 ```
 
 ### And coding style tests
 
-Explain what these tests test and why
+How to login
 
 ```
-Give an example
+ato login
 ```
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+See if server is online (json)
+```js
+const FiveM = require("fivem") // Import the npm package.
+const srv = new FiveM.Server('IP:PORT') // Set the IP with port.
+ 
+srv.getServerStatus().then(data => console.log(data)) // Get & log the data!
+
+//if online returns json {online: true}
+// if offline returns json {online: false, url: x, method: x}
+```
+
+Get Player Count (in numbers)
+```js
+const FiveM = require("fivem") // Import the npm package.
+const srv = new FiveM.Server('IP:PORT') // Set the IP with port.
+ 
+srv.getPlayers().then(data => console.log(data)) // Get & log the data!
+```
+
+Get all Resources
+```js
+const FiveM = require("fivem") // Import the npm package.
+const srv = new FiveM.Server('IP:PORT') // Set the IP with port.
+ 
+srv.getResources().then(data => console.log(data)) // Get & log the data!
+```
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-Add additional notes about how to deploy this on a live system.
+```
+npm i -g
+```
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
+- [Yarn](https://www.yarn.com/) - Build Tool
 - [NodeJs](https://nodejs.org/en/) - Server Environment
+- [VSCode](https://vscode.com/) - Coding IDE
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@wittyphantom333](https://github.com/wittyphantom333) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/wittyphantom333/The-Documentation-Compendium/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- Thank you to @JackCrispy for the API part of this project

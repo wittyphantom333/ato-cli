@@ -1,26 +1,212 @@
 #!/usr/bin/env node
+import axios from 'axios';
 
-import chalk from 'chalk'
-import axios from 'axios'
-
-const url = 'https://quotes.rest/qod'
-
-function getAPI () {
-  axios({
-    method: 'get',
-    url: url,
-    headers: { Accept: 'application/json' } // this api needs this header set for the request
-  })
-    .then(res => {
-      const quote = res.data.contents.quotes[0].quote
-      const author = res.data.contents.quotes[0].author
-      const log = chalk.green(`${quote} - ${author}`) // we use chalk to set the color green on successful response
-      console.log(log)
-    })
-    .catch(err => {
-      const log = chalk.red(err) // we set the color red here for errors.
-      console.log(log)
-    })
+const DEFAULT_OPTIONS = {
+  timeout: 1000
 }
 
-export default getAPI
+
+class Server {
+  constructor (ip, options) {
+    if (!ip) throw Error('Please provide an IP.')
+
+    this.ip = ip
+    this.options = Object.assign(DEFAULT_OPTIONS, options)
+  }
+
+  getPlayers () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/players.json`, {
+          timeout: this.options.timeout
+        })
+        .then(function (body) {
+          let players = body.data
+          send(players.length)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getPlayersAll () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/players.json`, {
+          timeout: this.options.timeout
+        })
+        .then(function (body) {
+          let players = body.data
+          send(players)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getServerStatus () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let server_status = {
+            online: true
+          }
+          send(server_status)
+        })
+        .catch(function (error) {
+          let server_status = {
+            online: false,
+            url: error.config.url,
+            method: error.config.method
+          }
+          if (error.response == undefined) send(server_status)
+        })
+    })
+  }
+
+  getResources () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let resources = body.data.resources
+          send(resources)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getOnesync () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let onesync = body.data.vars.onesync_enabled
+          send(onesync)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getMaxPlayers () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let maxClients = body.data.vars.sv_maxClients
+          send(maxClients)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getLocale () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let locale = body.data.vars.locale
+          send(locale)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getGamename () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let gamename = body.data.vars.gamename
+          send(gamename)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getEnhancedHostSupport () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let enhancedHostSupport = body.data.vars.sv_enhancedHostSupport
+          send(enhancedHostSupport)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getlicenseKeyToken () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let licenseKeyToken = body.data.vars.sv_licenseKeyToken
+          send(licenseKeyToken)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getScriptHookAllowed () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let scriptHookAllowed = body.data.vars.sv_scriptHookAllowed
+          send(scriptHookAllowed)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getTags () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let tags = body.data.vars.tags
+          send(tags)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+
+  getServer () {
+    return new Promise((send, err) => {
+      axios
+        .get(`http://${this.ip}/info.json`, { timeout: this.options.timeout })
+        .then(function (body) {
+          let server = body.data
+          send(server)
+        })
+        .catch(function (error) {
+          err(error)
+        })
+    })
+  }
+}
+
+export default Server
+export { Server as fivem}

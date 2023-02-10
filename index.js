@@ -10,7 +10,7 @@ import { Command } from 'commander'
 const program = new Command()
 
 import { errorLog } from './bin/utils.js'
-import getAPI from './bin/api/api.js'
+import Server from './bin/api/api.js'
 import utils from './bin/utils.js'
 import build from './bin/build.js'
 import push from './bin/push.js'
@@ -49,9 +49,10 @@ const greet = async () => {
 
 program
   .name('ato')
+  .description('allThingsOps CLI')
   .version('1.0.0')
   .allowExcessArguments(false)
-  .allowUnknownOption(true)
+  .allowUnknownOption()
 
 program
   .command('build')
@@ -67,12 +68,11 @@ program
     }
     if (options.docker) {
       errorLog('shit')
+      errorLog(options.docker[0])
     }
     //const buildType = options.docker ? `${options.docker} ` : ''
     //console.log(`Thank-you ${buildType}${name}`)
   })
-//.allowUnknownOption(true)
-//.allowExcessArguments(false)
 
 program.command('push').alias('p').description('push the project').action(push)
 
@@ -114,9 +114,23 @@ program
   .command('api')
   //.alias('a')
   .description('api')
-  .action(() => {
-    getAPI()
-  })
+  //.argument('<string>', 'API Argument')
+  .option('-f, --fivem <string>', 'Return FiveM API Results')
+  .option('-d, --debug', 'Display some debugging')
+  .action((options, command) => {
+    const srv = new Server('15.204.198.158:30120')
+    if (options.debug) {
+      console.error('Called %s with options %o', command.name(), options)
+    }
+    if (options.fivem === 'status'){
+      srv.getServerStatus().then(data => console.log(data))
+    }
+    if (options.fivem === 'players'){
+      srv.getPlayers().then(data => console.log(data)) 
+    }
+})
+
+//program.command('fivem').alias('f').description('fivem').action(new Server('15.204.198.158:30120'))
 
 //program.command('todo').alias('td').description('todo').action(todo)
 

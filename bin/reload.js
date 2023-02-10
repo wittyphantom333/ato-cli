@@ -23,7 +23,7 @@ function reload () {
     number--
     countdown.message('Reloading allThingsOps CLI ...  ')
     if (number === 0) {
-      ;('npm install -g')
+      ;('npm i -g')
       countdown.stop()
       process.stdout.write('\n')
       console.log(
