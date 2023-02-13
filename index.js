@@ -17,6 +17,7 @@ import push from './bin/push.js'
 import reload from './bin/reload.js'
 import stats from './bin/stats.js'
 import todo from './bin/todo.js'
+import fivem from './bin/fivem.js'
 
 let userName
 
@@ -108,7 +109,7 @@ program
     greet()
   })
 
-program
+/*program
   .command('fivem')
   //.alias('a')
   .description('fivem')
@@ -132,9 +133,14 @@ program
       srv.getPlayers().then(data => console.log(data)) 
       srv.getMaxPlayers().then(data => console.log(data)) 
     }
-})
+})*/
 
-//program.command('fivem').alias('f').description('fivem').action(new Server('15.204.198.158:30120'))
+program
+  .command('fivem')
+  .alias('f')
+  .argument('<string>', 'Options, use help for more information')
+  .description('fivem')
+  .action(fivem)
 
 //program.command('todo').alias('td').description('todo').action(todo)
 
