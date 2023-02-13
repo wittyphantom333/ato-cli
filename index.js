@@ -138,7 +138,7 @@ program
 program
   .command('fivem')
   .alias('f')
-  .argument('<string>', 'Options, use help for more information')
+  //.argument('<string>', 'Options, use help for more information')
   .description('fivem')
   .action(fivem)
 
