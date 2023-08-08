@@ -14,6 +14,6 @@ function errorLog(error) {
 }
 
 export default { sleep, msleep, errorLog }
-//export { sleep }
-//export { msleep }
-//export { errorLog }
+export { sleep }
+export { msleep }
+export { errorLog }
