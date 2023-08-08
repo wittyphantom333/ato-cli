@@ -122,26 +122,27 @@ program
       console.error('Called %s with options %o', command.name(), options)
     }
     if (!options.ip) {
-       errorLog('Please specify IP and Port')
+      errorLog('Please specify IP and Port')
       return
     }
     const srv = new Server(options.ip)
-    if (options.request === 'status'){
-      srv.getServerStatus().then(data => console.log(data)) 
+    if (options.request === 'status') {
+      srv.getServerStatus().then(data => console.log(data))
     }
-    if (options.request === 'players'){
-      srv.getPlayers().then(data => console.log(data)) 
-      srv.getMaxPlayers().then(data => console.log(data)) 
+    if (options.request === 'players') {
+      srv.getPlayers().then(data => console.log(data))
+      srv.getMaxPlayers().then(data => console.log(data))
     }
-})*/
+  })*/
 
 program
   .command('fivem')
   .alias('f')
-  //.argument('<string>', 'Options, use help for more information')
+  .argument('<string>', 'Options, use help for more information')
   .description('fivem')
   .action(fivem)
 
-//program.command('todo').alias('td').description('todo').action(todo)
+
+program.command('todo').alias('td').description('todo').action(todo)
 
 program.parse(process.argv)

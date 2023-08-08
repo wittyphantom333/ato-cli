@@ -28,7 +28,7 @@ usage:
   console.log(usageText)
 }
 
-function fivem (args) {
+function fivem(args) {
   switch (args) {
     case 'help':
       usage()
@@ -42,40 +42,53 @@ function fivem (args) {
     case 'resources':
       getResources()
       break
+    case 'server':
+      getServer()
+      break
     default:
       errorLog('invalid command passed')
       usage()
   }
 }
 
-function getPlayers () {
-    srv.getPlayers()
-       .then(data => {
-            console.log(chalk.green(data))
-        })
-       .catch(err => {
-            errorLog(err)
-        })
+function getPlayers() {
+  srv.getPlayers()
+    .then(data => {
+      console.log(chalk.green(data))
+    })
+    .catch(err => {
+      errorLog(err)
+    })
 }
 
-function getResources () {
-    srv.getResources()
-      .then(data => {
-            console.log(chalk.green(data))
-        })
-      .catch(err => {
-            errorLog(err)
-        })
+function getResources() {
+  srv.getResources()
+    .then(data => {
+      console.log(chalk.green(data))
+    })
+    .catch(err => {
+      errorLog(err)
+    })
 }
 
-function getServerStatus () {
-    srv.getServerStatus()
-     .then(data => {
-            console.log(chalk.green(data))
-        })
-     .catch(err => {
-            errorLog(err)
-        })
+function getServerStatus() {
+  srv.getServerStatus()
+    .then(data => {
+      console.log(chalk.green(data))
+    })
+    .catch(err => {
+      errorLog(err)
+    })
+}
+
+function getServer() {
+  srv.getServer()
+    .then(data => {
+      console.log(chalk.green(data))
+    })
+    .catch(err => {
+      errorLog(err)
+    })
 }
 
 export default fivem
