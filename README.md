@@ -8,8 +8,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/ato-cli/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/ato-cli/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>

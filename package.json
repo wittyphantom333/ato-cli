@@ -2,6 +2,7 @@
   "name": "ato-cli",
   "version": "1.0.6",
   "description": "allThingsOps CLI to automate DevOps -> MLOps -> DataOps",
+  "repository": "https://github.com/wittyphantom333/ato-cli.git",
   "main": "index.js",
   "type": "module",
   "scripts": {
