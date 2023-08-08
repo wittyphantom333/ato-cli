@@ -1,6 +1,6 @@
 {
   "name": "ato-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "allThingsOps CLI to automate DevOps -> MLOps -> DataOps",
   "main": "index.js",
   "type": "module",
