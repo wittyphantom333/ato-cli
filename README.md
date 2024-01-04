@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://img.myloview.com/stickers/ato-atd-letter-logo-design-polygon-monogram-icon-vector-template-700-219339600.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://avatars.githubusercontent.com/u/94903315?s=200&v=4" alt="Project logo"></a>
 </p>
 
 <h3 align="center">ato-cli</h3>
@@ -8,8 +8,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/ato-cli/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/wittyphantom333/The-Documentation-Compendium.svg)](https://github.com/wittyphantom333/ato-cli/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/wittyphantom333/ato-cli.svg)](https://github.com/wittyphantom333/ato-cli/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/wittyphantom333/ato-cli.svg)](https://github.com/wittyphantom333/ato-cli/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
